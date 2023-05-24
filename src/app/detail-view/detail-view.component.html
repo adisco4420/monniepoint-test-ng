@@ -1,0 +1,176 @@
+<div class="modal-body">
+    <div class="container-fliud p-3">
+        <div class="row images-container mb-4">
+            <div class="col-md-8 main-image">
+                <div>
+                    <img [src]="'/assets/img/'+selectedHome.images[0]+'.jpg'" alt="img" width="100%" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-4 other-images">
+                <div class="mb-3">
+                    <img [src]="'/assets/img/'+selectedHome.images[1]+'.jpg'" alt="img" width="100%" class="img-fluid">
+                </div>
+                <div>
+                    <img [src]="'/assets/img/'+selectedHome.images[2]+'.jpg'" alt="img" width="100%" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="mb-4">
+            <button type="button" class="btn btn-superhost">
+                <i class="fas fa-medal text-danger me-2"></i>
+                <span>Superhost</span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="d-flex justify-content-between">
+                    <h5 class="card-text">{{selectedHome.title}}</h5>
+                    <div class="d-flex">
+                        <div class="icon-box-round bg-lgt me-3"><p><i class="fas fa-external-link-alt"></i></p></div>
+                        <div class="icon-box-round bg-lgt"><p><i class="far fa-heart"></i></p></div>
+                    </div>
+                </div>
+                <div class="mb-3"><p class="card-text text-secondary">{{selectedHome.location}}</p></div>
+                <div class="border-bottom pad-btm-40px">
+                    <div class="d-flex gap-4">
+                        <div *ngFor="let item of infos" class="text-secd">
+                            <span class="me-2"><i class="{{item.icon}}"></i></span>
+                            <span>{{item.label}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-bottom pad-y-40px">
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let item of mainInfos">
+                            <div class="icon-box-red-md mb-3"><i class="{{item.icon}} fa-lg"></i></div>
+                            <h6>{{item.title}}</h6>
+                            <p class="text-ft-14px text-crl-113">{{item.desc}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-bottom pad-y-40px">
+                    <div class="pad-btm-40px">
+                        <h5>About this space</h5>
+                        <p class="text-ft-14px text-crl-113">{{details.about_this_space}}</p>
+                    </div>
+                    <div class="mb-4">
+                        <h5>The space</h5>
+                        <p class="text-ft-14px text-crl-113">{{details.the_space}}</p>
+                    </div>
+                    <h6 class="text-danger">Read more</h6>
+                </div>
+                <div class="border-bottom pad-y-40px">
+                    <div class="row">
+                        <div class="col-md-4 mb-4" *ngFor="let item of placeOffers">
+                            <span class="me-3"><i class="{{item.icon}}"></i></span>
+                            <span>{{item.label}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-bottom pad-y-40px">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5>Reviews</h5>
+                        <div>
+                            <span class="me-2"><i class="fas fa-star"></i></span>
+                            <span>5.0 - 124 reviews</span>
+                        </div>
+                    </div>
+                    <div class="card rounded-3 mb-3">
+                        <div class="card-body">
+                           <div class="row mb-2" *ngFor="let item of reviewRatings">
+                                <div class="col-md-4">
+                                    <h6>{{item.label}}</h6>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="progress height-10px" role="progressbar" aria-label="Example with label" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar bg-danger" [style.width]="item.width+'%'" ></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"> <h6>{{item.rating}}</h6></div>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3" *ngFor="let item of reviews">
+                            <div class="card rounded-4" style="height: 170px">
+                                <div class="card-body">
+                                    <div class="d-flex mb-3">
+                                        <div class="me-3"><img class="img-fluid rounded-circle" src="/assets/img/user-img.png" alt="user-img" width="50px"></div>
+                                        <div>
+                                            <h6 class="mb-1">{{item.name}}</h6>
+                                            <p class="text-ft-14px text-crl-113">{{item.date}}</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-ft-14px text-crl-113">{{item.review}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         
+            </div>
+            <div class="col-md-4">
+                <div class="card reserve-card py-3 sticky-top">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div>
+                                <span class="text-ft-20px"><b>{{selectedHome.amount}}</b> / </span>
+                                <span>night</span>
+                            </div>
+                            <div>
+                                <span class="me-2"><i class="fas fa-star"></i></span>
+                                <span>{{selectedHome.rating}}</span>
+                            </div>
+                        </div>
+                        <div class="border-bottom pb-4">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="checkin" class="form-label text-ft-14px text-crl-113">Check In</label>
+                                    <input type="date" class="form-control rounded-3" id="checkin" >
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <label for="checkin" class="form-label text-ft-14px text-crl-113">Check Out</label>
+                                    <input type="date" class="form-control rounded-3" id="checkin" >
+                                </div>
+                                <div class="col-12">
+                                    <label for="checkin" class="form-label text-ft-14px text-crl-113">Guests</label>
+                                    <select class="form-select rounded-3">
+                                        <option selected>1 guest</option>
+                                        <option value="1">2 guests</option>
+                                        <option value="2">3 guests</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-bottom py-4">
+                            <div class="d-flex justify-content-between text-ft-14px" *ngFor="let item of cart">
+                                <div>
+                                    <span class="me-2"><span>{{item.title}}</span></span>   
+                                    <i class="fas fa-exclamation-circle text-secondary"></i>
+                                </div>
+                                <div><span>{{item.amount}}</span></div>
+                            </div>
+                        </div>
+                        <div class="my-3">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="m-0">Total</h6>
+                                    <p class="text-secondary text-ft-14px">Before taxes</p>
+                                </div>
+                                <div class="amount">
+                                    <p>$2,606</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-btn-container">
+                            <button class="btn btn-danger w-100 rounded-4">Reserve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

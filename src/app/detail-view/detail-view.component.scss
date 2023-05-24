@@ -1,0 +1,44 @@
+.images-container {
+    img {
+        border-radius: 20px;
+    }
+    .main-image img {
+        height: 515px;
+    }
+    .other-images img{
+        height: 250px;
+    }
+}
+.btn-superhost {
+    border: 1px solid rgba(17, 17, 17, 0.1);
+}
+.bg-lgt {
+    background-color: #F5F5F4;
+}
+.text-secd {
+    color: rgb(92, 94, 94);
+}
+.pad-btm-40px {padding-bottom: 40px;}
+.pad-y-40px {
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+.reserve-card {
+    background-color: #F5F5F4;
+    border-radius: 20px;
+    border-color: transparent;
+}
+.icon-box-red-md {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FEF8F8;
+    color: #D43B50;
+    border-radius: 50%;
+}
+.text-ft-20px {font-size: 20px;}
+.text-ft-14px { font-size: 14px;}
+.text-crl-113 {color: rgb(133, 133, 133);}
+.height-10px{height: 10px;}

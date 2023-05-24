@@ -32,6 +32,28 @@
             padding: 10px;
             border-radius: 10px;
         }
+        .date-filter , select {
+            height: 50px;
+        }
+        .number-of-guest-input {
+            background-color: #F3F3F2;
+            padding: 10px;
+            border-radius: 10px;
+            width: 190px;
+            .input-group-text {
+                background-color: white;
+                color: rgb(255, 56, 92);
+                border-radius: 10px;
+            }
+            input.form-control {
+                background-color: #F3F3F2;
+                text-align: center;
+            }
+            .form-control, .input-group-text {
+                border: none;
+                height: 30px;
+            }
+        }
     }
 }
 .icon-box {
@@ -84,6 +106,7 @@
             border-radius: 20px;
             border-color: rgba(17, 17, 17, 0.1);
             cursor: pointer;
+            height: 420px;
             &:hover {
                 box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
             }
