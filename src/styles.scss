@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,600;0,700;1,400;1,500;1,700&display=swap');
+
 p {margin: 0px !important; padding: 0px;}
-.form-select:focus,.form-control:focus, button:focus, button:active {
+.form-select:focus,.form-control:focus, button:focus, button:active, .form-check-input:focus {
     box-shadow: none !important;
 }
-/* Importing Bootstrap SCSS file. */
+.modal-float-bottom-right {
+    position: absolute !important;
+    bottom: 0px;
+    height: 85vh;
+    right: 0px;
+    margin: inherit !important;
+}
 .modal-float-right {
     margin-top: 0px !important;
     margin-right: 0px !important;
@@ -21,3 +28,74 @@ p {margin: 0px !important; padding: 0px;}
     background-color: white;
     border-radius: 50%;
 }
+body.modal-open {
+    overflow: hidden;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: 0;
+    // height: 100%;
+    // overflow: hidden !important;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: width 0.3s !important;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    min-height: 500px;
+    animation-duration: 0.3s !important;
+    animation-timing-function: ease-in-out !important;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-open {
+    width: 100%;
+  }
+  
+  .modal-open .modal-content {
+    animation-name: slideInRight;
+  }
+  
+  .modal-closed .modal-content {
+    animation-name: slideOutRight;
+  }
+  
+  @keyframes slideInRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideOutRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }

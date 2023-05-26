@@ -1,0 +1,59 @@
+<div id="filter-modal" class="modal">
+    <div class="modal-content modal-float-bottom-right shadow-lg">
+        <div class="container-fluild h-100">
+            <main class="main-container">
+                <div class="header d-flex justify-content-between border-bottom pb-2">
+                    <h6 class="section-title">Filters</h6>
+                    <p class="text-danger clear-all-text">Clear All</p>
+                </div>
+                <div class="price-range border-bottom py-4">
+                    <h6 class="section-title m-0">Price range</h6>
+                    <p class="info-text">The average nightly price is $133</p>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <label class="form-label info-text">Min Price</label>
+                            <input type="number" class="form-control" value="5">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label info-text">Max Price</label>
+                            <input type="number" class="form-control" value="500">
+                        </div>
+                    </div>
+                </div>
+                <div class="type-of-place border-bottom py-4">
+                    <h6 class="section-title">Type of place</h6>
+                    <section>
+                        <div class="form-check mb-3" *ngFor="let item of typeOfPlaces">
+                            <input class="form-check-input" type="checkbox" [id]="item.title">
+                            <label class="form-check-label" [for]="item.title">
+                                <p class="m-0 checbox-label">{{item.title}}</p>   
+                                <p class="info-text">{{item.details}}</p>
+                            </label>
+                          </div>
+                          
+                    </section>
+                </div>
+                <div class="rooms border-bottom py-4">
+                    <h6 class="section-title">Rooms, beds, and baths</h6>
+                    <section>
+                        <div *ngFor="let item of rooms" class="mb-3">
+                            <p class="label">{{item.title}}</p>
+                            <div class="options mt-2 d-flex align-items-center gap-2">
+                                <div class="chip-pill" [class.active]="option=='Any'" *ngFor="let option of item.options">
+                                    <p>{{option}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+            <footer class="footer-container border-top">
+                <div class="action-btn-container mt-3">
+                    <div class=" w-100">
+                        <button class="btn btn-danger w-100 rounded-3">Show 100 Homes</button>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,4 @@
-import { Component, Input, OnInit , OnChanges} from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input, OnInit } from '@angular/core';
 import { homeResources } from '../resources/homes';
 
 @Component({
@@ -7,10 +6,13 @@ import { homeResources } from '../resources/homes';
   templateUrl: './detail-view.component.html',
   styleUrls: ['./detail-view.component.scss']
 })
-export class DetailViewComponent implements OnInit {
+export class DetailViewComponent implements OnInit  {
   @Input() homeIndex = 0;
+  modal: HTMLElement | null = document.getElementById("modal")
   homes = homeResources;
   selectedHome = this.homes[this.homeIndex];
+  imgBaseUrl = 'https://res.cloudinary.com/dx5bcp5ps/image/upload/v1685139853/monniepoint/';
+
   infos = [
     {icon: 'fas fa-male', label: '16+ guests'},
     {icon: 'fas fa-bed', label: '8 bedrooms'},
@@ -59,15 +61,32 @@ export class DetailViewComponent implements OnInit {
     {img: '', name: 'Daniel', date: 'March 2023', review: 'Overall a decent stay. I appreciated having a kitchen and access to firewood for the stove which heated up the little cabin very effectively.'},
     {img: '', name: 'Daniel', date: 'April 2023', review: 'Abbe’s tiny house was a perfect spot to spend the weekend while skiing in the Tetons. The space was comfortable and the wood stove kept us very warm.'},
   ]
-  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
-   this.selectedHome = this.homes[this.homeIndex];
-    // this.selectedHome = this.h
-    console.log('homeIndex', this.homeIndex);
+    this.initializeModal();
   }
-  getHome() {
 
+  openModal(homeIndex: number) {
+    this.selectedHome = this.homes[homeIndex];
+    const modal: any = document.getElementById("modal");
+    modal.style.display = "block";
+    modal.classList.remove("modal-closed");
+    modal.classList.add("modal-open");
+    document.querySelector('body')?.classList.add('modal-open')
+  }
+  initializeModal() {
+    const modal: any =  document.getElementById("modal")
+    modal.addEventListener("click", function (event: any) {
+      if (event.target === modal || event.target.classList.contains("close")) {
+        modal.classList.remove("modal-open");
+        modal.classList.add("modal-closed");
+        document.querySelector('body')?.classList.remove('modal-open')
+        // document.
+        setTimeout(function () {
+          modal.style.display = "none";
+        }, 300);
+      }
+    });
   }
 
 

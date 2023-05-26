@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DetailViewComponent } from '../detail-view/detail-view.component';
 import { homeResources } from '../resources/homes';
+import { FilterComponent } from '../filter/filter.component';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +9,11 @@ import { homeResources } from '../resources/homes';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('detailViewComp', {static: true}) detailViewComp: DetailViewComponent | undefined;
+  @ViewChild('filterComp', {static: true}) filterComp: FilterComponent | undefined;
+  imgBaseUrl = 'https://res.cloudinary.com/dx5bcp5ps/image/upload/v1685139853/monniepoint/';
+
+
   sideMenuItems = [
     {icon: 'fab fa-airbnb', label: 'All Homes'},
     {icon: 'fas fa-igloo', label: 'Amazing Views'},
@@ -29,31 +34,15 @@ export class HomeComponent implements OnInit {
     {icon: 'fas fa-stroopwafel', label: 'Deserts'},
   ]
   homes = homeResources;
-  constructor(private modalService: NgbModal) { }
+  constructor() { }
 
   ngOnInit(): void {}
 
   viewDetail(index: number) {
-    const option = {modalDialogClass: 'modal-float-right', animation: true}
-    const modalRef = this.modalService.open(DetailViewComponent, option);
-    modalRef.componentInstance.homeIndex = index;
+    this.detailViewComp?.openModal(index);
   }
-
-  onMouseEnterSidemenu() {
-    const sidemenuEl = document.getElementById('sidemenu');
-    const mainContainerEl = document.getElementById('main-container');
-    sidemenuEl?.classList.remove('col-md-1');
-    sidemenuEl?.classList.add('col-md-2');
-    mainContainerEl?.classList.remove('col-md-11')
-    mainContainerEl?.classList.add('col-md-10')
-  }
-  onMouseLeaveSidemenu(){
-    const sidemenuEl = document.getElementById('sidemenu');
-    const mainContainerEl = document.getElementById('main-container');
-    sidemenuEl?.classList.add('col-md-1');
-    sidemenuEl?.classList.remove('col-md-2');
-    mainContainerEl?.classList.add('col-md-11')
-    mainContainerEl?.classList.remove('col-md-10')
+  openFiterModal() {
+    this.filterComp?.openModal()
   }
 
 }

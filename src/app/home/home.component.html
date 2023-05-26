@@ -38,20 +38,19 @@
             </div>
         </div>
     </div>
-    <div class="filter-handler">
+    <div class="filter-handler" (click)="openFiterModal()">
         <div class="icon-box"><i class="fas fa-filter"></i></div>
     </div>
 </header>
 <div class="container-fluid main-content">
     <div class="row">
         <nav class="sidemenu col-md-1" id="sidemenu" 
-            (mouseenter)="onMouseEnterSidemenu()"
-            (mouseleave)="onMouseLeaveSidemenu()"
+
             >
             <div class="menu-item" *ngFor="let item of sideMenuItems; let i = index" [class.active]="i==0">
                 <div class="d-flex align-items-center">
                     <div ><i class="icon {{item.icon}}" ></i></div>
-                    <div class="label ms-3"><p>{{item.label}}</p></div>
+                    <div class="label ms-3"><p class="label-text">{{item.label}}</p></div>
                 </div>
             </div>
         </nav>
@@ -59,13 +58,13 @@
             <div class="section m-4">
                 <div class="row">
                     <div class="col-md-3 mb-4" *ngFor="let item of homes;let i = index">
-                        <div class="card home-item-card" (click)="viewDetail(i)">
+                        <div class="card home-item-card animate__animated animate__zoomIn" (click)="viewDetail(i)">
                             <div class="favourite-container">
                                 <div class="box">
                                     <p><i class="far fa-heart"></i></p>
                                 </div>
                             </div>
-                            <img [src]="'/assets/img/'+ item.images[0] +'.jpg'" 
+                            <img [src]="imgBaseUrl+item.images[0]" 
                                 class="img-fluid" alt="home-img" style="height: 230px;" >
                             <div class="card-body">
                               <h5 class="card-title">{{item.title}}</h5>
@@ -85,3 +84,5 @@
         </main>
     </div>
 </div>
+<app-detail-view #detailViewComp></app-detail-view>
+<app-filter #filterComp></app-filter>

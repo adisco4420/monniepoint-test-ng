@@ -5,24 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailViewComponent } from './detail-view/detail-view.component';
-import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DetailViewComponent
+    DetailViewComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgbModule,
-    NgbPaginationModule,
-    NgbProgressbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
